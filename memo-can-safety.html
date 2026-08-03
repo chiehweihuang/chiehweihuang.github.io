@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redundant safety in motor control over CAN · Chieh-Wei Huang</title>
+<meta name="description" content="An evaluation memo on the redundant-safety engineering robot demos skip: mutual guarding, failure taxonomy, stop levels, and the evidence to demand before scaling a fleet.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+  <a href="index.html" class="backlink">← Chieh-Wei Huang</a>
+  <article>
+    <header>
+      <h1>Redundant safety in motor control over CAN: what demos don't show</h1>
+      <p class="memo-meta">Evaluation memo · adapted from an internal methodology
+      note written in 2024, generalized. All product-specific details removed.</p>
+    </header>
+
+    <p class="lede">A robot demo shows the happy path: commands go out, motors move,
+    telemetry comes back. What it does not show is the design work that assumes
+    communication <em>will</em> fail and decides, axis by axis, what happens when
+    it does. When I evaluate a robotics product's readiness to
+    move from demo to deployment, this is one of the first places I look, because
+    it cannot be faked on stage and it is expensive to retrofit.</p>
+
+    <h2>The premise: links fail</h2>
+    <p>Hosts and motor drivers are usually connected over CAN or another serial
+    link, and serial links fail: electrically, in software, or at the connector.
+    A deployable system is designed on the premise that failure is the normal
+    operating environment, not an edge case. That premise produces one structural
+    requirement: <strong>both ends guard each other</strong>.</p>
+    <ul>
+      <li><strong>Host side.</strong> Every node reports periodically: encoder
+      values, error codes, heartbeats. If a node's telemetry misses its expected
+      window, the host must assume that node is no longer under control and bring
+      the system to a safe stop.</li>
+      <li><strong>Node side.</strong> Heartbeats and command values from the host
+      arrive on a known cadence. If they stop, the node must not keep executing its
+      last command; it stops itself safely, holding position or dropping torque
+      depending on the axis.</li>
+    </ul>
+    <p>Either side alone is insufficient. A host-only implementation cannot protect
+    against the host itself disappearing; a node-only implementation cannot see
+    system-level failures. The redundancy is the design.</p>
+
+    <h2>A minimal failure taxonomy</h2>
+    <ul>
+      <li><strong>CRC errors.</strong> The frame arrived corrupted. Operating on
+      corrupted data is worse than operating on stale data: discard the frame,
+      substitute the previous or an estimated value, and stop if errors persist.</li>
+      <li><strong>Packet loss.</strong> The expected frame never arrived. Detect it
+      by cadence, not by luck.</li>
+      <li><strong>Out-of-range values.</strong> Especially during development,
+      wrong-register access happens. Range-check every value and raise an error or
+      warning when it falls outside physical plausibility.</li>
+      <li><strong>Protocol version mismatch.</strong> Host and node built against
+      different versions of the object dictionary. Correct update procedures
+      prevent it in theory; real fleets cannot guarantee correct update procedures
+      in every environment, so check versions at runtime.</li>
+    </ul>
+
+    <h2>Stop levels are a risk decision, not a reflex</h2>
+    <p>Not every fault deserves a power cut. A deployable design assigns each fault
+    class a stop level, chosen by risk assessment:</p>
+    <ul>
+      <li><strong>Immediate shutdown.</strong> Overcurrent or undervoltage: cut power
+      to the affected section; recover only after the physical cause is removed.</li>
+      <li><strong>Stop command, power stays on.</strong> Most communication
+      faults land here.</li>
+      <li><strong>Warn and continue.</strong> Degradations an operator should know
+      about but that do not compromise control, such as a battery running low.</li>
+      <li><strong>Log only</strong>, and deliberately <strong>do nothing</strong>:
+      legitimate outcomes when the risk assessment supports them.</li>
+    </ul>
+    <p>How the motor actually stops is equally axis-specific: hold position under
+    servo control (a gripper that must not drop its payload), torque off (safe for
+    most axes), a brake-engage sequence (axes that back-drive under gravity, with
+    a defined release and engage procedure), or an emergency stop that cuts supply.
+    Choosing per axis is the work; a single global answer is a sign the analysis
+    has not been done.</p>
+
+    <h2>Serious errors versus operational errors</h2>
+    <p>The most useful split I have seen in practice: <strong>serious errors</strong>
+    are the ones that can end the business: a runaway axis, a burnout. These must
+    be fully error-safe: detected redundantly on both host and node, they stop the
+    robot, they require an operator to recover, and their protections cannot be
+    disabled without a deliberate procedure. <strong>Operational errors</strong>
+    happen while the system is still under control; the business keeps running but
+    the automation rate drops. These are the improvement backlog: label each one,
+    define its detection, and grow the share that recovers automatically.</p>
+    <p>Confusing the two categories is a red flag in either direction: treating
+    every fault as an e-stop makes the fleet unusable; treating a runaway condition
+    as recoverable makes it dangerous.</p>
+
+    <h2>What I ask for when evaluating</h2>
+    <ul>
+      <li><strong>The error matrix, with numbers.</strong> Thresholds for following
+      error, voltage, current, temperature, and loss duration, defined from design
+      calculation and experiment rather than left at vendor defaults. Blank cells
+      are honest; missing rows are not.</li>
+      <li><strong>Redundancy per fault class.</strong> Which checks run on the host,
+      which on the node, and where a single sensor is the only line of defense.
+      Single-sensor temperature monitoring, for example, is common, and acceptable
+      only as a named, justified risk.</li>
+      <li><strong>Disable procedures.</strong> What it takes to switch a protection
+      off. If the answer is "a config flag", the protection does not exist.</li>
+      <li><strong>Fleet recovery data.</strong> For deployed systems: which
+      operational errors occur, at what rate, and what share recovers without a
+      human. This number is the honest version of "it works".</li>
+    </ul>
+
+    <p>None of this appears in a demo video. All of it determines whether the
+    hundredth unit in the field is an asset or a liability; retrofitting it
+    after scaling costs multiples of designing it in.</p>
+
+    <footer>
+      <p class="note">Chieh-Wei Huang ·
+      <a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a> ·
+      <a href="index.html">about</a></p>
+    </footer>
+  </article>
+</main>
+</body>
+</html>
