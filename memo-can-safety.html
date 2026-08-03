@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Redundant safety in motor control over CAN · Chieh-Wei Huang</title>
 <meta name="description" content="An evaluation memo on the redundant-safety engineering robot demos skip: mutual guarding, failure taxonomy, stop levels, and the evidence to demand before scaling a fleet.">
+<meta property="og:title" content="Redundant safety in motor control over CAN: what demos don't show">
+<meta property="og:description" content="The safety engineering a robot demo skips, and the evidence to ask for before scaling a fleet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chiehweihuang.github.io/memo-can-safety.html">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,8 +18,8 @@
   <article>
     <header>
       <h1>Redundant safety in motor control over CAN: what demos don't show</h1>
-      <p class="memo-meta">Evaluation memo · adapted from an internal methodology
-      note written in 2024, generalized. All product-specific details removed.</p>
+      <p class="memo-meta">Evaluation memo · first written as a private working
+      note in 2024, generalized for publication.</p>
     </header>
 
     <p class="lede">A robot demo shows the happy path: commands go out, motors move,
@@ -84,7 +88,7 @@
     <h2>Serious errors versus operational errors</h2>
     <p>The most useful split I have seen in practice: <strong>serious errors</strong>
     are the ones that can end the business: a runaway axis, a burnout. These must
-    be fully error-safe: detected redundantly on both host and node, they stop the
+    be fully fail-safe: detected redundantly on both host and node, they stop the
     robot, they require an operator to recover, and their protections cannot be
     disabled without a deliberate procedure. <strong>Operational errors</strong>
     happen while the system is still under control; the business keeps running but
