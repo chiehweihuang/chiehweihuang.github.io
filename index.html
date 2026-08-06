@@ -10,6 +10,16 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiehweihuang.github.io/">
 <link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QHS7ZWBH3V');
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('a[href^="mailto:"]')) gtag('event', 'contact_email_click');
+  });
+</script>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
