@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="en" href="https://chiehweihuang.github.io/">
 <link rel="alternate" hreflang="zh-Hant" href="https://chiehweihuang.github.io/zh.html">
 <link rel="alternate" hreflang="x-default" href="https://chiehweihuang.github.io/">
+<script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
 <script>
@@ -22,14 +23,36 @@
   document.addEventListener('click', function (e) {
     if (e.target.closest('a[href^="mailto:"]')) gtag('event', 'contact_email_click');
   });
+  window.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function isDark() {
+      var a = document.documentElement.getAttribute('data-theme');
+      if (a === 'dark') return true;
+      if (a === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function paint() { btn.setAttribute('aria-pressed', isDark() ? 'true' : 'false'); }
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      paint();
+    });
+    paint();
+  });
 </script>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 <main id="main">
-  <nav class="lang" aria-label="Language">
-    <a href="zh.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
-  </nav>
+  <div class="topbar">
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark mode</button>
+    <nav class="lang" aria-label="Language">
+      <span aria-current="true">English</span>
+      <a href="zh.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+    </nav>
+  </div>
   <header>
     <h1>Chieh-Wei (Bertram) Huang</h1>
     <p class="tagline">I evaluate whether Physical AI and robotics products can
@@ -151,7 +174,7 @@
   </section>
 </main>
 <footer>
-  <p class="note">© 2026 Chieh-Wei Huang</p>
+  <p class="note"><a href="accessibility.html">Accessibility</a> · © 2026 Chieh-Wei Huang</p>
 </footer>
 </body>
 </html>
