@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Physical AI Deployment Map · Chieh-Wei (Bertram) Huang</title>
+<meta name="description" content="Where Physical AI actually works in 2026: 16 deployment categories plotted by environment openness and autonomy, colored by evidence grade. The upper right is where claims outrun evidence.">
+<script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.viz-root {
+  --surface-1: var(--bg);
+  --grade-a: #2a78d6;
+  --grade-b: #eb6834;
+  --grade-c: #1baf7a;
+  --grade-d: var(--muted);
+  --frontier: rgba(176, 106, 0, 0.10);
+  --frontier-line: #b06a00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .viz-root {
+    --grade-a: #3987e5;
+    --grade-b: #d95926;
+    --grade-c: #199e70;
+    --frontier: rgba(201, 133, 0, 0.14);
+    --frontier-line: #c98500;
+  }
+}
+:root[data-theme="dark"] .viz-root {
+  --grade-a: #3987e5;
+  --grade-b: #d95926;
+  --grade-c: #199e70;
+  --frontier: rgba(201, 133, 0, 0.14);
+  --frontier-line: #c98500;
+}
+.viz-root svg { max-width: 100%; height: auto; display: block; }
+.viz-root .axis-label { font-size: 13px; fill: var(--muted); }
+.viz-root .axis-end { font-size: 12px; fill: var(--muted); }
+.viz-root .dot-label { font-size: 12px; fill: var(--text); }
+.viz-root .frontier-label { font-size: 12.5px; fill: var(--frontier-line); font-weight: 600; }
+.viz-root .grid { stroke: var(--rule); stroke-width: 1; }
+.viz-root .mark { stroke: var(--bg); stroke-width: 2; }
+.viz-root .mark-hollow { fill: var(--bg); stroke-width: 2.5; }
+.viz-root g.dot { cursor: pointer; }
+.viz-root g.dot:focus { outline: none; }
+.viz-root g.dot:focus .mark, .viz-root g.dot:hover .mark { stroke: var(--accent); stroke-width: 3; }
+#tooltip {
+  position: absolute; max-width: 20rem; padding: 0.6rem 0.8rem;
+  background: var(--bg); color: var(--text); border: 1px solid var(--rule);
+  border-radius: 6px; font-size: 0.85rem; line-height: 1.45;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15); pointer-events: none; z-index: 10;
+}
+#tooltip[hidden] { display: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.9rem 1.4rem; font-size: 0.85rem; color: var(--muted); margin: 0.75rem 0 0; padding: 0; list-style: none; }
+.legend li { display: flex; align-items: center; gap: 0.45rem; }
+.legend svg { flex: none; }
+.map-table { border-collapse: collapse; font-size: 0.85rem; margin-top: var(--space-md); width: 100%; }
+.map-table caption { text-align: left; color: var(--muted); padding-bottom: 0.5rem; }
+.map-table th, .map-table td { text-align: left; padding: 0.45rem 0.7rem 0.45rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.map-table th { color: var(--muted); font-weight: 600; }
+.table-wrap { overflow-x: visible; }
+@media (max-width: 720px) {
+  .map-table { display: block; }
+  .map-table thead { position: absolute; clip: rect(0,0,0,0); }
+  .map-table tbody, .map-table tr, .map-table td { display: block; }
+  .map-table tr { padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
+  .map-table td { border: none; padding: 0.1rem 0; }
+  .map-table td::before { content: attr(data-label) ": "; font-weight: 600; color: var(--muted); }
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QHS7ZWBH3V');
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('a[href^="mailto:"]')) gtag('event', 'contact_email_click');
+  });
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+  <a href="index.html" class="backlink">← Chieh-Wei (Bertram) Huang</a>
+  <h1>The Physical AI Deployment Map</h1>
+  <p class="memo-meta">August 2026 · 16 deployment categories · positions are judgment,
+  evidence grades are sourced · <a href="#method">method</a></p>
+
+  <p class="lede">Where do robots actually work today? Each dot is a deployment
+  category, placed by how open its operating environment is and how autonomous
+  the system really runs. Color and shape show the grade of public evidence
+  behind it. The pattern is the point: deployments crowd the constrained and
+  the human-assisted regions, and the upper right, where every pitch deck
+  points, is where evidence thins out.</p>
+
+  <div class="viz-root" style="position: relative;">
+    <svg id="chart" viewBox="0 0 920 600" role="img" aria-labelledby="chart-title chart-desc">
+      <title id="chart-title">Scatter map of Physical AI deployment categories</title>
+      <desc id="chart-desc">Sixteen deployment categories plotted by environment
+      openness (horizontal) and autonomy (vertical), colored by evidence grade.
+      Full data in the table below.</desc>
+    </svg>
+    <div id="tooltip" hidden></div>
+    <ul class="legend" aria-label="Legend">
+      <li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--grade-a)"/></svg>A · Regulatory or independent data</li>
+      <li><svg width="14" height="14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" fill="var(--grade-b)"/></svg>B · Customer-confirmed</li>
+      <li><svg width="14" height="14" aria-hidden="true"><polygon points="7,1 13,13 1,13" fill="var(--grade-c)"/></svg>C · Vendor-claimed</li>
+      <li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="var(--grade-d)" stroke-width="2.5"/></svg>D · Announcement-only</li>
+      <li>Dot size = deployment scale</li>
+    </ul>
+  </div>
+
+  <p>Two readings honest people can disagree on: the skeptic sees an empty
+  upper right; the optimist sees a ladder being climbed, and one A-grade dot
+  (geofenced robotaxis) already living there. Both readings are on this chart.
+  Deciding which dots move next, and which claims deserve your money, is
+  evaluation work.</p>
+
+  <p><strong>That gap is my job.</strong> I write fixed-scope deployment
+  feasibility memos and technical due diligence for the people betting on
+  these dots: <a href="index.html#services">what I evaluate</a>, or
+  <a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a>.</p>
+
+  <div class="table-wrap">
+  <table class="map-table" id="data-table">
+    <caption>The data behind the map. Env = environment openness (0 constrained,
+    100 open world). Auto = autonomy (0 human-operated, 100 unattended).</caption>
+    <thead><tr><th scope="col">Category</th><th scope="col">Env</th><th scope="col">Auto</th><th scope="col">Scale</th><th scope="col">Evidence</th><th scope="col">Note</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+
+  <h2 id="method">Method</h2>
+  <p>Compiled August 2026 from a 220-source review of public deployment
+  reporting, regulatory filings, and teardown literature. Axis positions are my
+  judgment as an evaluator; evidence grades follow the strongest public source
+  found: A = regulatory or independent data, B = customer-confirmed deployment,
+  C = vendor-claimed metrics, D = announcement or demo only. Dot positions for
+  D-grade entries reflect the claimed operating point, not a demonstrated one.
+  Disagree with a placement? <a href="mailto:chieh.wei.huang@gmail.com">Tell
+  me</a>, with a source, and I will move the dot.</p>
+</main>
+<footer>
+  <p class="note"><a href="accessibility.html">Accessibility</a> · © 2026 Chieh-Wei Huang</p>
+</footer>
+<script>
+(function () {
+  var DATA = [
+    { n: "Autonomous mine haulage", env: 12, auto: 88, s: 3, g: "B", note: "Caterpillar and Komatsu fleets; 20B+ tonnes hauled on closed sites" },
+    { n: "Warehouse AMR fleets", env: 18, auto: 80, s: 3, g: "B", note: "Amazon discloses 750k+ robots; caged and mapped facilities" },
+    { n: "Surgical robotics", env: 15, auto: 8, s: 3, g: "A", note: "da Vinci: regulatory clearance, clinical literature; surgeon-operated by design" },
+    { n: "Warehouse arm picking", env: 20, auto: 75, s: 2, g: "B", note: "Item picking behind fences; customer-confirmed programs" },
+    { n: "Agricultural autonomy", env: 25, auto: 70, s: 2, g: "C", note: "Tractor autonomy on private fields; vendor-reported acreage" },
+    { n: "Humanoids in research and education", env: 35, auto: 50, s: 2, g: "A", note: "Unitree IPO filing: 73.6% of humanoid revenue from research/education, ~9% industrial" },
+    { n: "Teleoperated retail restocking", env: 40, auto: 30, s: 2, g: "B", note: "300 Japanese convenience stores; human teleoperators stay in the loop" },
+    { n: "Drone delivery corridors", env: 45, auto: 85, s: 2, g: "B", note: "Zipline 1M+ deliveries on fixed, regulator-approved routes" },
+    { n: "Quadruped inspection", env: 45, auto: 55, s: 2, g: "C", note: "Plant and site patrols; vendor case studies" },
+    { n: "Humanoid logistics pilots", env: 50, auto: 62, s: 1, g: "B", note: "Agility at GXO: RaaS contract, customer-confirmed, no audited metrics" },
+    { n: "Humanoid EMS pilots (China)", env: 55, auto: 58, s: 1, g: "C", note: "UBTech, AgiBot at contract manufacturers; vendor-led reporting" },
+    { n: "Humanoid auto-factory pilots", env: 55, auto: 60, s: 1, g: "C", note: "Figure at BMW: deployment confirmed, performance numbers vendor-only" },
+    { n: "Geofenced robotaxis", env: 65, auto: 92, s: 2, g: "A", note: "Waymo: regulator-filed miles and incident data; the frontier's one A-grade resident" },
+    { n: "Autonomous trucking pilots", env: 70, auto: 85, s: 1, g: "C", note: "Highway pilots with safety drivers; sector has repeated shutdowns" },
+    { n: "Humanoid mass-production commitments", env: 75, auto: 75, s: 1, g: "D", note: "Hyundai 25k-unit Atlas plan: announcement stage, labor disputes pending" },
+    { n: "General-purpose humanoid demos", env: 85, auto: 80, s: 1, g: "D", note: "Stage demos; teleoperation independently confirmed at flagship events" }
+  ];
+  var COLOR = { A: "var(--grade-a)", B: "var(--grade-b)", C: "var(--grade-c)", D: "var(--grade-d)" };
+  var GRADE_TEXT = { A: "A · Regulatory/independent", B: "B · Customer-confirmed", C: "C · Vendor-claimed", D: "D · Announcement-only" };
+  var SIZE = { 1: 8, 2: 11, 3: 15 };
+  var SCALE_TEXT = { 1: "Pilot", 2: "Mid", 3: "Large" };
+  var M = { l: 70, r: 30, t: 20, b: 70 }, W = 920, H = 600;
+  var pw = W - M.l - M.r, ph = H - M.t - M.b;
+  function X(v) { return M.l + pw * v / 100; }
+  function Y(v) { return M.t + ph * (1 - v / 100); }
+  var svg = document.getElementById("chart");
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text) e.textContent = text;
+    return e;
+  }
+  // frontier region: env>=60, auto>=60
+  svg.appendChild(el("rect", { x: X(60), y: Y(100), width: X(100) - X(60), height: Y(60) - Y(100), fill: "var(--frontier)", stroke: "var(--frontier-line)", "stroke-dasharray": "5 4", "stroke-width": 1.5, rx: 8 }));
+  svg.appendChild(el("text", { x: X(98), y: Y(62) - 10, "text-anchor": "end", class: "frontier-label" }, "The frontier: claims live here, evidence thins"));
+  // grid + axes
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    svg.appendChild(el("line", { x1: X(v), y1: Y(0), x2: X(v), y2: Y(100), class: "grid", opacity: v === 0 ? 1 : 0.45 }));
+    svg.appendChild(el("line", { x1: X(0), y1: Y(v), x2: X(100), y2: Y(v), class: "grid", opacity: v === 0 ? 1 : 0.45 }));
+  });
+  svg.appendChild(el("text", { x: X(50), y: H - 26, "text-anchor": "middle", class: "axis-label" }, "Environment: how open is the operating world?"));
+  svg.appendChild(el("text", { x: X(0), y: H - 44, "text-anchor": "start", class: "axis-end" }, "← controlled / fenced"));
+  svg.appendChild(el("text", { x: X(100), y: H - 44, "text-anchor": "end", class: "axis-end" }, "open world →"));
+  var yl = el("text", { x: 22, y: Y(50), "text-anchor": "middle", class: "axis-label", transform: "rotate(-90 22 " + Y(50) + ")" }, "Autonomy: who is really doing the work?");
+  svg.appendChild(yl);
+  svg.appendChild(el("text", { x: 44, y: Y(90), "text-anchor": "start", class: "axis-end", transform: "rotate(-90 44 " + Y(90) + ")" }, "machine →"));
+  svg.appendChild(el("text", { x: 44, y: Y(0), "text-anchor": "start", class: "axis-end", transform: "rotate(-90 44 " + Y(0) + ")" }, "← human-operated"));
+  var tooltip = document.getElementById("tooltip");
+  function mark(d, cx, cy, r) {
+    if (d.g === "A") return el("circle", { cx: cx, cy: cy, r: r, fill: COLOR.A, class: "mark" });
+    if (d.g === "B") return el("rect", { x: cx - r, y: cy - r, width: 2 * r, height: 2 * r, fill: COLOR.B, class: "mark", rx: 2 });
+    if (d.g === "C") return el("polygon", { points: cx + "," + (cy - r * 1.2) + " " + (cx + r * 1.1) + "," + (cy + r * 0.9) + " " + (cx - r * 1.1) + "," + (cy + r * 0.9), fill: COLOR.C, class: "mark" });
+    return el("circle", { cx: cx, cy: cy, r: r, stroke: COLOR.D, class: "mark-hollow" });
+  }
+  var tbody = document.querySelector("#data-table tbody");
+  DATA.forEach(function (d) {
+    var cx = X(d.env), cy = Y(d.auto), r = SIZE[d.s];
+    var g = el("g", { class: "dot", tabindex: 0, role: "img", "aria-label": d.n + ". Environment " + d.env + " of 100, autonomy " + d.auto + " of 100, " + SCALE_TEXT[d.s] + " scale, evidence grade " + d.g + ". " + d.note });
+    g.appendChild(el("circle", { cx: cx, cy: cy, r: r + 8, fill: "transparent" }));
+    g.appendChild(mark(d, cx, cy, r));
+    function show() {
+      tooltip.innerHTML = "<strong>" + d.n + "</strong><br>" + GRADE_TEXT[d.g] + " · " + SCALE_TEXT[d.s] + " scale<br>" + d.note;
+      tooltip.hidden = false;
+      var host = svg.getBoundingClientRect();
+      var px = host.left + window.scrollX + (cx / W) * host.width;
+      var py = host.top + window.scrollY + (cy / H) * host.height;
+      tooltip.style.left = Math.min(px + 14, window.scrollX + document.documentElement.clientWidth - tooltip.offsetWidth - 8) + "px";
+      tooltip.style.top = (py - tooltip.offsetHeight - 10) + "px";
+    }
+    function hide() { tooltip.hidden = true; }
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+    svg.appendChild(g);
+    var tr = document.createElement("tr");
+    [["Category", d.n], ["Env", d.env], ["Auto", d.auto], ["Scale", SCALE_TEXT[d.s]], ["Evidence", GRADE_TEXT[d.g]], ["Note", d.note]].forEach(function (c) {
+      var td = document.createElement("td");
+      td.setAttribute("data-label", c[0]);
+      td.textContent = c[1];
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  // selective direct labels
+  [["Geofenced robotaxis", 65, 92, 12, 4], ["General-purpose humanoid demos", 85, 80, -62, -16], ["Autonomous mine haulage", 12, 88, 14, 4], ["Surgical robotics", 15, 8, 14, 4], ["Teleoperated retail restocking", 40, 30, 12, -12]].forEach(function (l) {
+    svg.appendChild(el("text", { x: X(l[1]) + l[3], y: Y(l[2]) + l[4], class: "dot-label" }, l[0]));
+  });
+})();
+</script>
+</body>
+</html>

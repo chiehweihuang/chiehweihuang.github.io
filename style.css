@@ -106,6 +106,12 @@ a:focus-visible {
 
 .note { color: var(--muted); }
 
+.article-list { list-style: none; padding: 0; margin: 0; }
+.article-list li { max-width: 65ch; margin-bottom: var(--space-md); }
+.article-list a { font-weight: 600; }
+.article-meta { color: var(--muted); font-size: 0.85rem; margin-left: 0.6rem; }
+.article-list p { margin: 0.25rem 0 0; }
+
 footer {
   max-width: 44rem;
   margin: 0 auto;

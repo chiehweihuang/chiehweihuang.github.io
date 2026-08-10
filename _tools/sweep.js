@@ -1,7 +1,7 @@
 // Layout gate: assert no horizontal scroll at each width. Run: node sweep.js
 const { chromium } = require('playwright-core');
 const widths = [320, 768, 1024, 1280, 1440, 1742, 1920];
-const pages = ['file:///C:/Code/chiehweihuang.github.io/index.html', 'file:///C:/Code/chiehweihuang.github.io/zh.html', 'file:///C:/Code/chiehweihuang.github.io/accessibility.html'];
+const pages = ['file:///C:/Code/chiehweihuang.github.io/index.html', 'file:///C:/Code/chiehweihuang.github.io/zh.html', 'file:///C:/Code/chiehweihuang.github.io/accessibility.html', 'file:///C:/Code/chiehweihuang.github.io/map.html'];
 (async () => {
   const browser = await chromium.launch({ channel: 'chrome' });
   let fail = 0;
