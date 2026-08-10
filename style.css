@@ -107,6 +107,15 @@ a:focus-visible {
 .note { color: var(--muted); }
 
 .article-list { list-style: none; padding: 0; margin: 0; }
+.article-list img {
+  width: 100%;
+  max-width: 36rem;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+}
 .article-list li { max-width: 65ch; margin-bottom: var(--space-md); }
 .article-list a { font-weight: 600; }
 .article-meta { color: var(--muted); font-size: 0.85rem; margin-left: 0.6rem; }
