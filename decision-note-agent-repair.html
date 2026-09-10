@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Report Found 17 Issues. Should I Fix Them All? · Chieh-Wei Huang (Bertram)</title>
+<meta name="description" content="When does an automated finding justify an AI agent changing a public website? A real-site case with retained report output and a separate keyboard test.">
+<link rel="canonical" href="https://chiehweihuang.github.io/decision-note-agent-repair.html">
+<link rel="alternate" hreflang="en" href="https://chiehweihuang.github.io/decision-note-agent-repair.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chiehweihuang.github.io/zh-decision-note-agent-repair.html">
+<script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="style.css?v=20260908-nav2">
+<script defer src="site.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-name" href="index.html">Chieh-Wei Huang (Bertram)</a><nav class="site-nav" aria-label="Main navigation"><ul><li><a href="work.html">Work</a></li><li><a href="cases.html">Cases</a></li><li><a href="research.html" aria-current="page">Research</a></li><li><a href="futures.html">Futures</a></li><li><a href="about.html">About</a></li></ul></nav><div class="utility-nav"><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Theme</button><a href="zh-decision-note-agent-repair.html" lang="zh-Hant">繁中</a></div></div></header>
+
+<main id="main">
+  <a class="backlink" href="research.html">← Research</a>
+  <article class="measure">
+    <header class="page-intro">
+      <p class="eyebrow">Decision Note 001</p>
+      <h1>The report found 17 issues. Should I fix them all?</h1>
+      <p class="tagline">When does an automated finding justify letting an AI agent directly modify a public website?</p>
+      <p class="memo-meta">Draft: <time datetime="2026-08-23">23 August 2026</time> · Revised: <time datetime="2026-09-05">5 September 2026</time></p>
+    </header>
+
+    <section aria-labelledby="note-0">
+      <h2 id="note-0">Decision question</h2>
+<p><strong>When does an automated finding justify letting an AI agent directly modify a public website?</strong></p>
+<p>Neither count nor severity can answer that alone. First distinguish a repair of a confirmed problem from an edit intended to test a hypothesis. Then specify the expected outcome, the check, and how to recover if the edit fails.</p>
+    </section>
+
+    <section aria-labelledby="note-1">
+      <h2 id="note-1">The repair rounds I want to reduce</h2>
+<p>I often let AI agents edit code directly. What frustrates me is having to revisit the same problem through several repair rounds.</p>
+<p>I assumed a verification report would tell the agent what to fix. It does not always tell the agent what a correct result means. I tested that assumption on the professional website I am currently rebuilding.</p>
+    </section>
+
+    <section aria-labelledby="note-2">
+      <h2 id="note-2">One homepage, two inspection scopes</h2>
+<p>I ran <a href="https://chiehweihuang.github.io/beacon/">Beacon</a>, the accessibility and frontend-evidence tool I maintain, on the Chinese homepage. Beacon reads source code and measures the rendered page so a person or agent can decide what may need attention.</p>
+<p>The source-only scan returned a score of 72, 48% coverage and four findings, including two marked critical.</p>
+<p>After browser measurement, the score rose to 78 and coverage to 61%. The finding count also rose, from four to seventeen.</p>
+<p>The inspection scope grew, and so did the list. That change alone does not establish whether the page became worse. Here, coverage means the share of Beacon's scoring weights with measured evidence. It is not the proportion of all accessibility problems detected or a success rate.</p>
+    </section>
+
+    <section aria-labelledby="note-3">
+      <h2 id="note-3">Why seventeen does not mean seventeen tasks</h2>
+<p>The counts are not simply additive. One of the original four findings was “contrast not verified.” The retained summaries and finding list indicate that the merge removed that reminder and added fourteen touch reviews: 4 − 1 + 14 = 17. Measured results, unresolved signals and improvement advice cannot be read as engineering workload.</p>
+<p>The retained tool output from 29 August records 110 text-contrast passes and zero contrast failures. These are the tool's measurement verdicts, not individually reviewed human findings. They enter scoring and coverage but not the prominent issue count.</p>
+<p>The fourteen new findings were touch-size <code>review</code> items. They are not confirmed WCAG violations: WCAG 2.2 AA specifies 24×24 CSS pixels, with exceptions including spacing and inline links; AAA specifies an enhanced 44×44 CSS pixel target, with its own exceptions. Falling below 44px alone does not establish an AA violation. The same controls were also reported once per viewport. They deserve design judgment; they are not fourteen repairs to hand directly to an agent.</p>
+<p>The two historical critical findings flagged click handlers without nearby keyboard handlers. I then inspected the two related handlers in the current version. One listener belongs to a native <code>&lt;button&gt;</code>, which already receives keyboard-generated clicks. The other only recorded analytics for Email links; keyboard activation generates the same click. This is an interpretation of the current version, to be checked through the operations below; it does not establish identical historical behavior.</p>
+    </section>
+
+    <section aria-labelledby="keyboard-followup"><h2 id="keyboard-followup">What I verified next</h2>
+<p>On 5 September 2026, I saved the current homepage, script and stylesheet as a test snapshot. At widths of 320px and 1280px, Tab reached the theme button and email link. Enter and Space each changed the theme once and updated aria-pressed; Enter on the email link called the existing analytics function once.</p>
+<p>The test blocked external requests and prevented the email link's default action, so it transmitted no analytics and sent no email. This new result supports retaining the two current handlers rather than changing them solely because they lack extra keyboard handlers. It is not a full historical reproduction or an experiment comparing agent repairs.</p>
+<p><a href="decision-notes/evidence/2026-08-29-tool-output.md">Historical output extract</a> · <a href="decision-notes/evidence/2026-09-05-keyboard/result.json">New test results and source hashes</a> · <a href="decision-notes/evidence/2026-09-05-keyboard/README.md">Reproduction instructions and limits</a></p>
+</section>
+
+    <section aria-labelledby="note-4">
+      <h2 id="note-4">What “fix everything” could do</h2>
+<p>An agent might add redundant keyboard handlers to the button and trigger an action twice. It might enlarge every link because the report placed “more comfortable” and “fails the minimum” in the same findings list.</p>
+<p>These are risks inferred from component behavior, not agent mistakes observed in this test. I did not run repairs from the two report formats or measure rework. This case therefore does not establish that the report caused rework, or that my classification reduces it.</p>
+    </section>
+
+    <section aria-labelledby="note-5">
+      <h2 id="note-5">How I now read a report</h2>
+<p>I no longer treat a finding as a task. I first ask:</p>
+<ol><li>Is this a confirmed failure, an improvement advisory, or an unresolved review?</li><li>Has the same condition been counted again across viewports or pages?</li><li>Does the report understand the component and product context, or only a code fragment?</li><li>After the edit, can the system produce positive evidence and stop?</li></ol>
+<p>For a confirmed problem, I specify the intended outcome, edit scope, repeatable check and recovery path before assigning a repair. When the cause is uncertain, an edit can also be an experiment: state the hypothesis, what to observe, when to stop and how to restore the previous state. An experimental change is not yet a fix; the specified behavior must pass its check before that repair is closed.</p>
+    </section>
+
+    <section aria-labelledby="note-6">
+      <h2 id="note-6">This changed what I expect from Beacon</h2>
+<p>Beacon had one clear gap: even a clean browser run could still merge into a report that said contrast was unverified. I have corrected that path so clean measurements become pass evidence, with a regression test.</p>
+<p>The test raised two follow-up requirements: distinguish failures, advisories, possible false positives and passes, and avoid treating repeated viewport results as workload. A source and test check on 5 September 2026 found regression tests for clean passes, review presentation and some touch-result deduplication; all 44 related tests passed. This establishes checks for specified cases, not that the report is understandable or every result is classified correctly.</p>
+    </section>
+
+    <section aria-labelledby="note-7">
+      <h2 id="note-7">Current judgment and next test</h2>
+<p><strong>An automated report can guide an agent toward a repair. It is not an authorization for every finding it lists.</strong></p>
+<p>This is one website and one tool; I did not compare how different agents would act. The next test will use real Bright Raven pages to see whether the same classification holds and whether a more actionable report actually reduces repair rounds.</p>
+    </section>
+
+    <section aria-labelledby="note-8">
+      <h2 id="note-8">A decision readers can use this for</h2>
+<p>If an agent has just built or changed your website and you now have an inspection report, this note can help you decide which findings to assign for repair, which need another test, and which need you to explain the intended result.</p>
+<p>For the button warning in this case, I would first check whether keyboard activation completes the operation exactly once. If it already does, adding a handler merely to silence a warning has no demonstrated benefit. If it fails, the repair should address that reproducible behavior. Readers do not have to inspect every line of code, but they need to understand which behavior must remain and how to check it.</p>
+<p>This case shows how I examine assumptions between a report and an action. It does not yet establish lower team costs or willingness to pay for this judgment.</p>
+    </section>
+
+    <section aria-labelledby="note-9">
+      <h2 id="note-9">What would change my judgment</h2>
+<p>If a report includes a reproducible failure, explicit expected behavior and a repeatable check, and the agent fixes that failure while preserving existing functionality, I would accept that report as a direct repair instruction for that bounded class of findings. Repeated human interpretation would not be necessary.</p>
+<p>Conversely, if classifying the report does not reduce incorrect repairs or rework and instead consumes more human time, I would narrow or remove that manual step. Not every finding warrants another review.</p>
+    </section>
+
+    <section aria-labelledby="note-10">
+      <h2 id="note-10">How to run the next validation</h2>
+<p>Choose a real page we are authorized to modify, freeze its source and report, and start from two identical copies. In one run, let the agent act on the original report. In the other, provide an interpreted repair list with expected behavior, preservation constraints and stopping conditions. Keep the model version, tools, initial task and execution budget the same, and retain prompts, diffs and each verification result.</p>
+<p>Compare resolved failures, introduced regressions, repair rounds and human interpretation and verification time. The final report score alone is insufficient. A single pair checks whether the experiment is workable; repeated results across tasks would be needed to support effectiveness.</p>
+    </section>
+
+    <section aria-labelledby="note-11">
+      <h2 id="note-11">Decision history</h2>
+<ul><li><strong>Starting question:</strong> Does an automated finding justify direct agent repair?</li><li><strong>Current decision:</strong> Do not hand the whole list to an agent as repair instructions. This note examines two keyboard warnings and touch-size reviews; it does not provide a disposition for all seventeen findings and does not claim a complete triage.</li><li><strong>Product consequence:</strong> Beacon now records clean pass evidence; some review and deduplication behavior is tested, while improved guidance for real actions remains unverified.</li></ul>
+    </section>
+
+    <section aria-labelledby="note-12">
+      <h2 id="note-12">Scope and reproduction notes</h2>
+<p>The draft began on 23 August 2026. Its numbers are supported by tool output retained from the 29 August rerun: source scanning covered zh.html, site.js and style.css, with browser measurements at 320×720 and 1280×900. The output was recovered on 5 September, but the temporary audit JSON files and complete historical source snapshot were not recovered. We can check what the tool reported, but cannot claim complete reproduction conditions for the same historical version. The separate 5 September keyboard test retains its source files, browser version, hashes and results; it supports only the specified operations on that snapshot. Actual 200% browser zoom, screen readers and user task completion are outside that keyboard evidence.</p>
+    </section>
+
+    <section aria-labelledby="note-13">
+      <h2 id="note-13">Sources</h2>
+<ul><li><a href="https://www.w3.org/WAI/test-evaluate/">W3C WAI: Evaluating Web Accessibility</a></li><li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">W3C: Understanding WCAG 2.2 Target Size (Minimum)</a></li><li><a href="https://www.w3.org/TR/act-rules-format/">W3C ACT Rules Format 1.1</a></li><li><a href="https://github.com/dequelabs/axe-core/blob/develop/doc/API.md">axe-core API</a></li><li><a href="https://developer.chrome.com/docs/lighthouse/accessibility/scoring">Lighthouse accessibility scoring</a></li><li><a href="https://www.microsoft.com/en-us/research/publication/is-self-repair-a-silver-bullet-for-code-generation/">Olausson et al., “Is Self-Repair a Silver Bullet for Code Generation?”</a></li><li><a href="https://github.com/chiehweihuang/beacon">Beacon source</a></li></ul>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer"><div class="site-footer-inner"><p>Copyright 2026 Chieh-Wei Huang (Bertram)</p><p><a href="accessibility.html">Accessibility</a> · <a href="zh-decision-note-agent-repair.html" lang="zh-Hant">繁體中文</a></p></div></footer>
+</body>
+</html>

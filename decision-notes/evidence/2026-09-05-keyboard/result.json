@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-09-04T20:15:15.759Z",
+  "node": "v24.13.0",
+  "browser": "152.0.7977.77",
+  "sourceHashes": {
+    "zh.html": "12429d1e46a0ba6131e3f893092cfb8d57b9268f04de69e14649e9c0535e2d84",
+    "site.js": "dc119c7cf8ba27dc3fc50b35f932e04b8097449539cd1ba85bb3d9beb86f91e7",
+    "style.css": "b8c753c598dccffb7f05502124ffa0ab81cc5eecf34678b67b83fbce6de7ab1c"
+  },
+  "observations": [
+    {
+      "width": 320,
+      "action": "Enter",
+      "theme": "dark",
+      "pressed": "true",
+      "clicks": 1
+    },
+    {
+      "width": 320,
+      "action": "Space",
+      "theme": "light",
+      "pressed": "false",
+      "clicks": 2
+    },
+    {
+      "width": 320,
+      "action": "Email link Enter",
+      "events": [
+        [
+          "event",
+          "contact_email_click"
+        ]
+      ]
+    },
+    {
+      "width": 1280,
+      "action": "Enter",
+      "theme": "dark",
+      "pressed": "true",
+      "clicks": 1
+    },
+    {
+      "width": 1280,
+      "action": "Space",
+      "theme": "light",
+      "pressed": "false",
+      "clicks": 2
+    },
+    {
+      "width": 1280,
+      "action": "Email link Enter",
+      "events": [
+        [
+          "event",
+          "contact_email_click"
+        ]
+      ]
+    }
+  ],
+  "boundary": "Current saved page only. Email default action is prevented after site handlers; no email client, analytics transmission, screen reader or historical snapshot is tested.",
+  "passed": true
+}

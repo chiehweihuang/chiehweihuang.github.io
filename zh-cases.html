@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>案例 · 黃介韋 (Bertram)</title>
+<meta name="description" content="匿名整理人機協作、AI 決策設計、機器人部署與證據邊界案例。">
+<link rel="canonical" href="https://chiehweihuang.github.io/zh-cases.html"><link rel="alternate" hreflang="en" href="https://chiehweihuang.github.io/cases.html"><link rel="alternate" hreflang="zh-Hant" href="https://chiehweihuang.github.io/zh-cases.html">
+<script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="style.css?v=20260908-nav2"><script defer src="site.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至主要內容</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-name" href="zh.html">黃介韋 (Bertram)</a><nav class="site-nav" aria-label="主要導覽"><ul><li><a href="zh-work.html">合作方式</a></li><li><a href="zh-cases.html" aria-current="page">案例</a></li><li><a href="zh-research.html">研究</a></li><li><a href="zh-futures.html">未來判讀</a></li><li><a href="zh-about.html">關於我</a></li></ul></nav><div class="utility-nav"><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">主題</button><a href="cases.html" lang="en">EN</a></div></div></header>
+<main id="main">
+  <header class="page-intro"><p class="eyebrow">實務案例</p><h1>在真實限制下做判斷</h1><p class="tagline">涉及保密的工作已隱去公司、客戶與產品名稱。這裡不按零件或產業分類，而是交代當時真正要判斷的問題。</p></header>
+
+  <section aria-labelledby="field-heading"><h2 id="field-heading">AI 與機器進入實體工作</h2>
+    <article class="case-study"><h3>遙操作機器人裡，哪些工作仍由人承擔？</h3><dl><dt>核心問題</dt><dd>一套零售場域機器人要跨過遙操作、機上控制、門市環境與現場支援，不只是在受控 demo 裡移動。</dd><dt>專業判斷</dt><dd>把馬達、電源、煞車、感測、夾爪與運算介面視為同一套作業系統；從電子、CAN、組裝、供應商與操作條件交叉追查現場故障。</dd><dt>結果或限制</dt><dd>支援多年部署，以及日本、臺灣、中國之間的量產協作。這項工作不假設完全自主；人的介入與錯誤恢復一直是系統的一部分。</dd></dl></article>
+    <article class="case-study"><h3>觸覺感測設計能不能撐過量產？</h3><dl><dt>核心問題</dt><dd>機器人夾爪用的柔性觸覺感測器，在設計概念可行的情況下仍有製造風險。</dd><dt>專業判斷</dt><dd>重新檢視幾何、材料與製程，讓設計回到 FPC 供應商能穩定製作與檢查的條件。</dd><dt>結果或限制</dt><dd>設計更接近可量產狀態；這是量產就緒工作，不等於已證明市場需求或長期現場可靠度。</dd></dl></article>
+    <article class="case-study"><h3>技術準備好了，不等於產品準備好了</h3><dl><dt>核心問題</dt><dd>一套力回饋外骨骼需要可量產的電子系統，但商業用途仍不確定。</dd><dt>專業判斷</dt><dd>改善電子設計，同時把量產風險與更大的市場問題拆開：需求與替代方案是否足以支持商品化。</dd><dt>結果或限制</dt><dd>電子設計有所改善，商品化後來仍停止。這個案例留下的判斷是：工程進展不能替產品創造需求。</dd></dl></article>
+  </section>
+
+  <section aria-labelledby="decision-heading"><h2 id="decision-heading">決策與資訊系統</h2>
+    <article class="case-study" id="maida"><h3>不是再做一個清單，而是只給一個選擇</h3><dl><dt>核心問題</dt><dd>遊戲庫愈大，休息愈容易變成瀏覽、比較與選擇疲勞。</dd><dt>專業判斷</dt><dd>Maida 每次只呈現一款已安裝遊戲，讓人明確選擇開始、稍後或換一款；沒有要持續滑動的 feed。</dd><dt>結果或限制</dt><dd>已發布的桌面應用程式，支援四種語言、鍵盤、手把與螢幕閱讀器。它驗證的是能否讓人完成選擇；付費意願仍未證實。</dd></dl></article>
+    <article class="case-study"><h3>讓 agent 輔助評估，但不讓它越過證據邊界</h3><dl><dt>核心問題</dt><dd>AI 產生無障礙與資訊可發現性建議的速度，遠快於它證明「實際測過什麼」的能力。</dd><dt>專業判斷</dt><dd>Beacon 以可重現檢測、涵蓋率、弱證據狀態，以及機器結果與人工判斷分離為核心。</dd><dt>結果或限制</dt><dd>這套開放工具能產出有邊界的評估證據，不把局部掃描說成合規。它支撐我的方法，但無障礙 audit 不是主要服務。</dd></dl><p><a href="https://chiehweihuang.github.io/beacon/">查看 Beacon</a></p></article>
+    <article class="case-study"><h3>採購建議不該假裝確定</h3><dl><dt>核心問題</dt><dd>產品比較常把官方規格、搜尋摘要、業配內容與未說出口的偏好混在一起。</dd><dt>專業判斷</dt><dd>設計內部研究流程，價格與規格必須回到官方來源，不確定性要留下，最後選擇仍交還給使用者。</dd><dt>結果或限制</dt><dd>這套流程正在內部使用與開發中；它是方法證據，不是已完成的採購產品。</dd></dl></article>
+    <article class="case-study"><h3>AI 生成的幾何，仍要通過物理世界的門檻</h3><dl><dt>核心問題</dt><dd>程式能產生看似有效的 3D 模型，卻可能忽略配合、製程、組裝與材料現實。</dd><dt>專業判斷</dt><dd>把程式化幾何接上數值檢查、可製造輸出、渲染檢視與明確的校正參數。</dd><dt>結果或限制</dt><dd>流程能產出可檢查的 STEP／STL，並留下已知假設。模擬只對已測模型成立，不是全面物理驗證。</dd></dl></article>
+  </section>
+
+  <section aria-labelledby="scale-heading"><h2 id="scale-heading">讓改動經得起規模</h2>
+    <article class="case-study"><h3>從工程變更走到真正出貨</h3><dl><dt>核心問題</dt><dd>筆電與平板專案要把客戶變更轉成做得出來、追得回去的量產決定。</dd><dt>專業判斷</dt><dd>橫跨 NPI、BOM、ECN、模具、供應商與客戶端協作；後期帶領四人團隊。</dd><dt>結果或限制</dt><dd>七年 ODM 經歷中，多項產品進入量產，包含在美國客戶端工作六個月。客戶與產品名稱保持保密。</dd></dl></article>
+    <article class="case-study"><h3>把產品意圖放進電源與時程限制</h3><dl><dt>核心問題</dt><dd>一款消費型健康裝置，需要把預期體驗轉成 PCBA、電源架構與可執行的開發時程。</dd><dt>專業判斷</dt><dd>讓產品決定回到電氣限制、開發相依與量產時間，而不是把三者拆成互不相干的工作。</dd><dt>結果或限制</dt><dd>建立開發所需的技術與時程結構；本案例不宣稱醫療效能或法規核准。</dd></dl></article>
+  </section>
+</main>
+<footer class="site-footer"><div class="site-footer-inner"><p>Copyright 2026 黃介韋 (Bertram)</p><p><a href="accessibility.html">無障礙聲明</a> · <a href="cases.html" lang="en">English</a></p></div></footer>
+</body></html>

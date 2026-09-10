@@ -3,209 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chieh-Wei Huang · Physical AI &amp; Hardware Technology Evaluation</title>
-<meta name="description" content="Independent evaluation of Physical AI, robotics, and hardware products: feasibility reviews, technical due diligence, and Taiwan–Japan development risk. Based near Kyoto, working remotely.">
-<meta property="og:title" content="Chieh-Wei Huang · Physical AI &amp; Hardware Technology Evaluation">
-<meta property="og:description" content="Feasibility reviews and technical due diligence for robotics, Physical AI, and Taiwan–Japan hardware development.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://chiehweihuang.github.io/">
-<meta property="og:image" content="https://chiehweihuang.github.io/assets/og-map.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+<title>Chieh-Wei Huang (Bertram) · Technology Research &amp; Systems Analysis</title>
+<meta name="description" content="The demo works. Is it ready for real use? Chieh-Wei Huang (Bertram) reviews evidence, testing gaps and human oversight before your next technology commitment.">
+<link rel="canonical" href="https://chiehweihuang.github.io/">
 <link rel="alternate" hreflang="en" href="https://chiehweihuang.github.io/">
 <link rel="alternate" hreflang="zh-Hant" href="https://chiehweihuang.github.io/zh.html">
 <link rel="alternate" hreflang="x-default" href="https://chiehweihuang.github.io/">
+<meta property="og:title" content="Chieh-Wei Huang (Bertram) · Technology Research &amp; Systems Analysis">
+<meta property="og:description" content="The demo works. Is it ready for real use? Evidence review for teams deciding what to release, delegate or fund next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chiehweihuang.github.io/">
+<meta property="og:image" content="https://chiehweihuang.github.io/assets/og-map.png">
+<meta name="twitter:card" content="summary_large_image">
 <script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260908-nav2">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QHS7ZWBH3V');
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('a[href^="mailto:"]')) gtag('event', 'contact_email_click');
-  });
-  window.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    function isDark() {
-      var a = document.documentElement.getAttribute('data-theme');
-      if (a === 'dark') return true;
-      if (a === 'light') return false;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    function paint() { btn.setAttribute('aria-pressed', isDark() ? 'true' : 'false'); }
-    btn.addEventListener('click', function () {
-      var next = isDark() ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      paint();
-    });
-    paint();
-  });
+<script defer src="site.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Chieh-Wei Huang (Bertram)",
+  "alternateName": "Bertram Huang",
+  "url": "https://chiehweihuang.github.io/",
+  "knowsAbout": ["Human-AI collaboration", "Robotics deployment", "Physical AI", "Accessibility", "Electronics manufacturing"]
+}
 </script>
 </head>
-<body>
-<a href="#main" class="skip-link">Skip to main content</a>
-<main id="main">
-  <div class="topbar">
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark mode</button>
-    <nav class="lang" aria-label="Language">
-      <span aria-current="true">English</span>
-      <a href="zh.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+<body class="conversion-page">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-name" href="index.html" aria-current="page">Chieh-Wei Huang (Bertram)</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="cases.html">Cases</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="futures.html">Futures</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
     </nav>
+    <div class="utility-nav">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Theme</button>
+      <a href="zh.html" lang="zh-Hant" hreflang="zh-Hant">繁中</a>
+    </div>
   </div>
-  <header>
-    <h1>Chieh-Wei (Bertram) Huang</h1>
-    <p class="tagline">I evaluate whether Physical AI and robotics products can
-    survive real deployment: fixed scope, in writing, before the money is
-    committed.</p>
-    <p class="kicker">Physical AI &amp; Hardware Technology Evaluation · based
-    near Kyoto, Japan · remote across Japan and Taiwan · on-site by arrangement</p>
+</header>
+
+<main id="main">
+  <header class="page-intro">
+    <p class="eyebrow">Technology research &amp; systems analysis</p>
+    <h1>The demo works.<br>Is it ready for real use?</h1>
+    <p class="tagline">Before you put an AI agent into a team workflow or fund the next prototype, I help you examine what the tests actually support, where human checks still matter, and what to verify next.</p>
+    <p>I am Chieh-Wei Huang (Bertram). My experience spans hardware manufacturing, robotics and AI tools. I bring that experience to a focused, written review of your next technology decision.</p>
+    <div class="actions">
+      <a class="button-link" href="mailto:chieh.wei.huang@gmail.com?subject=Technology%20review%20enquiry&amp;body=We%20are%20building%3A%0AOur%20next%20step%20is%3A%0AWhat%20we%20are%20unsure%20about%3A">Email me about your project</a>
+      <a class="button-link secondary" href="work.html">What a review would cover</a>
+    </div>
+    <p class="kicker">A few sentences are enough. No deck needed. · Based near Kyoto, Japan</p>
   </header>
 
-  <p class="lede">Physical AI is moving faster than anyone can evaluate it.
-  So I evaluate it in the open. Start with the work.</p>
-
-  <section aria-labelledby="analysis">
-    <h2 id="analysis">Analysis</h2>
-    <p class="note">Public evaluations and research notes, updated as the work
-    happens.</p>
-    <ul class="article-list">
-      <li>
-        <a href="map.html" tabindex="-1" aria-hidden="true"><img
-          src="assets/og-map.png" alt="" width="1200" height="630"
-          loading="lazy"></a>
-        <a href="map.html">The Physical AI Deployment Map</a>
-        <span class="article-meta">2026-08 · interactive</span>
-        <p>Sixteen deployment categories placed by environment openness and real
-        autonomy, colored by evidence grade. Where claims outrun proof, and what
-        that gap means for anyone writing a check.</p>
-      </li>
-    </ul>
+  <section class="mvp" aria-labelledby="mvp-heading">
+    <p class="eyebrow">Decision Note 001</p>
+    <h2 id="mvp-heading">The report found 17 issues. Should I fix them all?</h2>
+    <p>I used Beacon on my own website to examine which findings justify an agent's repair instructions, and which require another test or a clearer intended outcome.</p>
+    <p>This case shows how I form a judgment. Whether the method reduces rework remains untested.</p>
+    <div class="actions">
+      <a class="button-link" href="decision-note-agent-repair.html">Read the Decision Note</a>
+      <a class="button-link secondary" href="cases.html">Explore past work</a>
+    </div>
   </section>
 
-  <section aria-labelledby="services">
-    <h2 id="services">Work with me</h2>
-
-    <p>The models change monthly. Physics does not. Motors still overheat,
-    sensors still drift, supply chains still slip, and a robot that cannot
-    survive manufacturing never reaches the field, however smart its policy.</p>
-
-    <p>I spent seventeen years in that layer. At Pegatron I pushed notebooks
-    and tablets into mass production for first-tier US brands, spent six months
-    embedded at the customer's site in Austin, Texas, and was publicly
-    recognized for it, then led an engineering team through the change reviews
-    that decide what ships. Then Japan's robotics industry, 2018 to 2024:
-    boards I worked on went into teleoperated robots restocking Japanese
-    convenience stores, flex circuits I reworked for mass production sit on
-    the fingertips of robot grippers, and my supply chains ran across Japan,
-    Taiwan, and China in three languages. Physical AI claims live or die in that layer. My job is
-    telling you which, before you sign.</p>
-
-    <p>I write for the people who sign: investors running technical diligence
-    on a robotics deal, teams about to pilot or buy a Physical AI product,
-    whether it walks, rolls, flies, or swims, and hardware companies building
-    between Japan and Taiwan. If the analysis above is the kind of judgment you need
-    on your own decision, this is how to buy it.</p>
-
-    <h3>Deployment feasibility memo</h3>
-    <p class="note">For investors and buying teams. Every vendor says ready now,
-    and most of what you know comes from the demo they built to sell you.</p>
-    <p>You send the product materials and describe the deployment target; we talk.
-    You get a written memo: what the product claims, the conditions that make the
-    demo work, the most likely failure points in the field, what to test first,
-    and the evidence to require before the next commitment.</p>
-
-    <h3>Hardware plan review</h3>
-    <p class="note">For hardware founders and the investors underwriting them.
-    The plan says mass production within a year. Hardware schedules fail in
-    predictable places, and they are cheapest to find before tooling starts.</p>
-    <p>You send the schedule, BOM, and production plan. You get written findings
-    on whether the schedule, production path, supply chain, and engineering
-    assumptions hold, ranked by risk, with the questions worth putting to vendors
-    before signing anything.</p>
-
-    <h3>Taiwan–Japan development risk review</h3>
-    <p class="note">For Japanese companies building with Taiwanese ODM/OEM
-    partners, and Taiwanese teams serving Japanese clients. Both sides say
-    everything is fine. Between two languages and two engineering cultures,
-    something often gets lost.</p>
-    <p>You get a review of requirements, expectations, and execution risk across
-    both sides, read in both languages: where the plan and the partner's reality
-    diverge, and what to fix before it becomes a schedule slip.</p>
-
-    <p>The decisions these memos feed are large: tooling that would have to be
-    recut, a pilot that burns two quarters, a check into a robot that cannot
-    leave the lab. Against any of those, a fixed-scope written evaluation is a
-    rounding error. And if I read your situation and do not believe I can
-    improve the decision, I will say so before you pay.</p>
-    <p>Every engagement is fixed-scope with a written deliverable, and most of the
-    work is remote by nature: documents, calls, and memos. When it needs to go
-    deep into circuit design, control, or production execution, I bring in domain
-    specialists and manage the review.</p>
+  <section aria-labelledby="questions-heading">
+    <h2 id="questions-heading">Is one of these your next decision?</h2>
+    <div class="grid">
+      <article class="panel">
+        <h3>You are putting an agent into a team workflow.</h3>
+        <p>The pilot works with supervision. Before reducing human checks, you need to know which failures people still catch and how someone can take over.</p>
+      </article>
+      <article class="panel">
+        <h3>The agent keeps fixing things. Are you closer to release?</h3>
+        <p>The report changes after every repair. Before another round, you need to separate a real defect from a test limitation and agree what “fixed” means for the user.</p>
+      </article>
+      <article class="panel">
+        <h3>The prototype works. The next batch costs real money.</h3>
+        <p>Before committing, you need to know whether component tests carry over to the complete system, and which reliability or manufacturing questions remain open.</p>
+      </article>
+    </div>
   </section>
 
-  <section aria-labelledby="track-record">
-    <h2 id="track-record">Track record</h2>
-
-    <h3>Tokyo robotics, prototype to production (2018–2024)</h3>
-    <ul>
-      <li>A haptic force-feedback exoskeleton (exiii, my first role in Japan):
-      brought in to ready it for mass production and improved its board design;
-      the productization was shelved when the VR market proved too small.
-      Watching a sound prototype die for market reasons is also part of the
-      education.</li>
-      <li>Teleoperated shelf-restocking robots in Japanese convenience stores,
-      for a Bloomberg-covered Tokyo robotics company:
-      motor-driver, power-distribution, brake, and gripper electronics; CAN
-      safety architecture; field-failure investigation; an NVIDIA Jetson
-      carrier-board program; and PCBA production management into 2024.</li>
-      <li>Flexible-PCB (FPC) design for magnetic tactile skin sensors on robot
-      grippers at a Tokyo tactile-sensing company, and consumer health-device
-      electronics with project-schedule control for a Tokyo hardware
-      startup.</li>
-    </ul>
-    <p>The recurring job was the same: judge which prototype was ready to advance,
-    which process would survive scale, and why the thing that worked in the demo
-    failed in the field.</p>
-
-    <h3>Pegatron: notebooks and tablets to mass production (2009–2016)</h3>
-    <p>Seven years at one of Taiwan's largest ODMs, from electrical engineer to
-    manager of a four-engineer team: schematic and layout design,
-    engineering-change review, new-product introduction from prototype into mass
-    production, and BOM, schedule, tooling, and supplier-plan reviews with the
-    factory. Included six months embedded on a US customer's site in Austin,
-    Texas, coordinating design, validation, and factory teams across borders.
-    This is where the Taiwan-side manufacturing judgment comes from.</p>
-
-    <h3>AI-assisted practice (2024–present)</h3>
-    <p>I work AI-assisted by default: research, claim cross-checking, and the
-    writing behind every memo. I also build my own evaluation infrastructure,
-    currently a procurement decision pipeline that enforces official-source
-    verification for every price and spec it compares, data pipelines
-    connecting ECAD/MCAD design data to sourcing and BOM decisions, and an
-    accessibility inspection tool that scores interfaces against WCAG 2.2,
-    the same discipline behind this site's own accessibility statement. Same
-    judgment, delivered faster, with evidence attached.</p>
-    <p>Since April 2024 I also serve as a founding board member of the APAC
-    Authentic Inclusion Association, researching how AI and emerging technology
-    can serve elders and people with disabilities.</p>
-
+  <section aria-labelledby="work-heading">
+    <h2 id="work-heading">Selected work</h2>
+    <div class="grid">
+      <article class="panel">
+        <p class="eyebrow">Physical AI</p>
+        <h3><a href="map.html">The Physical AI Deployment Map</a></h3>
+        <p>Sixteen deployment categories placed by environmental constraint,
+        real autonomy, scale, and evidence quality.</p>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">AI-assisted evaluation</p>
+        <h3><a href="https://chiehweihuang.github.io/beacon/">Beacon</a></h3>
+        <p>An accessibility and AEO inspection system that publishes its
+        benchmark, measured coverage, weak detectors, and limits.</p>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Decision design</p>
+        <h3><a href="cases.html#maida">One choice instead of another feed</a></h3>
+        <p>A released desktop product that reduces choice overload without
+        turning recommendations into another dependency loop.</p>
+      </article>
+    </div>
+    <p><a href="cases.html">See the full case library</a>, including deployed
+    robots, tactile sensing, haptics, mass production, AI tools, and evaluation pipelines.</p>
   </section>
 
-  <section aria-labelledby="contact">
-    <h2 id="contact">Contact</h2>
+  <section aria-labelledby="method-heading">
+    <h2 id="method-heading">One method across physical and digital systems</h2>
+    <ol class="principles">
+      <li><span><strong>Name the decision.</strong><br>Specify the next commitment: changing a design, releasing to users, reducing oversight, or increasing investment.</span></li>
+      <li><span><strong>Separate claims from evidence.</strong><br>Distinguish measured operation, customer confirmation, vendor reporting, demos, and analogy.</span></li>
+      <li><span><strong>Find the assumptions that matter.</strong><br>Investigate tests, manufacturing conditions, human intervention and recovery where they could change the decision.</span></li>
+      <li><span><strong>Set the next gate.</strong><br>State what evidence would justify continuing, changing course, or stopping.</span></li>
+    </ol>
+  </section>
+
+  <section class="contact-block" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">What are you about to release, delegate or fund?</h2>
+    <p>Tell me what you are building, what happens next, and what you are unsure about. You do not need to diagnose the problem first. Please leave confidential material out of the first message.</p>
+    <div class="actions"><a class="button-link" href="mailto:chieh.wei.huang@gmail.com?subject=Technology%20review%20enquiry&amp;body=We%20are%20building%3A%0AOur%20next%20step%20is%3A%0AWhat%20we%20are%20unsure%20about%3A">Email me about your project</a><a class="button-link secondary" href="work.html">See scope and deliverables</a></div>
+    <p>I will first check whether I can help. Scope, fee and end date are agreed before paid work begins.</p>
+    <p>Email button not opening? Copy this address into your email app:</p>
     <p><a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a></p>
-    <p class="note">Start with an email describing your situation and the decision
-    it feeds. You will get an honest answer on whether I can help, and a fixed
-    quote if I can.</p>
   </section>
 </main>
-<footer>
-  <p class="note"><a href="accessibility.html">Accessibility</a> · © 2026 Chieh-Wei Huang</p>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>Copyright 2026 Chieh-Wei Huang (Bertram)</p>
+    <p><a href="accessibility.html">Accessibility</a> · <a href="zh.html" lang="zh-Hant">繁體中文</a></p>
+  </div>
 </footer>
 </body>
 </html>

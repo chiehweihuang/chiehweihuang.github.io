@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Physical AI Deployment Map · Chieh-Wei (Bertram) Huang</title>
+<title>The Physical AI Deployment Map · Chieh-Wei Huang (Bertram)</title>
 <meta name="description" content="Where Physical AI actually works in 2026: 16 deployment categories plotted by environment openness and autonomy, colored by evidence grade. The upper right is where claims outrun evidence.">
 <meta property="og:title" content="The Physical AI Deployment Map">
 <meta property="og:description" content="Where robots actually work in 2026: 16 deployment categories, graded by evidence. The upper right is where claims outrun proof.">
@@ -14,7 +14,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260908-nav2">
 <style>
 .viz-root {
   --surface-1: var(--bg);
@@ -50,7 +50,6 @@
 .viz-root .mark { stroke: var(--bg); stroke-width: 2; }
 .viz-root .mark-hollow { fill: var(--bg); stroke-width: 2.5; }
 .viz-root g.dot { cursor: pointer; }
-.viz-root g.dot:focus { outline: none; }
 .viz-root g.dot:focus .mark, .viz-root g.dot:hover .mark { stroke: var(--accent); stroke-width: 3; }
 #tooltip {
   position: absolute; max-width: 20rem; padding: 0.6rem 0.8rem;
@@ -69,28 +68,21 @@
 .table-wrap { overflow-x: visible; }
 @media (max-width: 720px) {
   .map-table { display: block; }
-  .map-table thead { position: absolute; clip: rect(0,0,0,0); }
+  .map-table caption { display: block; }
+  .map-table thead { display: none; }
   .map-table tbody, .map-table tr, .map-table td { display: block; }
   .map-table tr { padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
   .map-table td { border: none; padding: 0.1rem 0; }
   .map-table td::before { content: attr(data-label) ": "; font-weight: 600; color: var(--muted); }
 }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QHS7ZWBH3V');
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('a[href^="mailto:"]')) gtag('event', 'contact_email_click');
-  });
-</script>
+<script defer src="site.js"></script>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-name" href="index.html">Chieh-Wei Huang (Bertram)</a><nav class="site-nav" aria-label="Main navigation"><ul><li><a href="work.html">Work</a></li><li><a href="cases.html">Cases</a></li><li><a href="research.html" aria-current="page">Research</a></li><li><a href="futures.html">Futures</a></li><li><a href="about.html">About</a></li></ul></nav><div class="utility-nav"><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Theme</button><a href="zh-research.html" lang="zh-Hant">繁中</a></div></div></header>
 <main id="main">
-  <a href="index.html" class="backlink">← Chieh-Wei (Bertram) Huang</a>
+  <a href="research.html" class="backlink">← Research</a>
   <h1>The Physical AI Deployment Map</h1>
   <p class="memo-meta">August 2026 · 16 deployment categories · positions are judgment,
   evidence grades are sourced · <a href="#method">method</a></p>
@@ -125,9 +117,9 @@
   Deciding which dots move next, and which claims deserve your money, is
   evaluation work.</p>
 
-  <p><strong>That gap is my job.</strong> I write fixed-scope deployment
-  feasibility memos and technical due diligence for the people betting on
-  these dots: <a href="index.html#services">what I evaluate</a>, or
+  <p><strong>That gap is where human work becomes visible.</strong> My review asks
+  what people must monitor, verify and repair before a system deserves the
+  next commitment: <a href="work.html">see the Human-AI Collaboration Review</a>, or
   <a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a>.</p>
 
   <div class="table-wrap">
@@ -149,9 +141,7 @@
   Disagree with a placement? <a href="mailto:chieh.wei.huang@gmail.com">Tell
   me</a>, with a source, and I will move the dot.</p>
 </main>
-<footer>
-  <p class="note"><a href="accessibility.html">Accessibility</a> · © 2026 Chieh-Wei Huang</p>
-</footer>
+<footer class="site-footer"><div class="site-footer-inner"><p>Copyright 2026 Chieh-Wei Huang (Bertram)</p><p><a href="accessibility.html">Accessibility</a> · <a href="research.html">Research</a></p></div></footer>
 <script>
 (function () {
   var DATA = [

@@ -96,17 +96,14 @@ main,
 }
 
 .site-header-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content max-content;
-  grid-template-areas: "name nav utility";
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-sm) var(--space-md);
   padding-block: var(--space-md);
 }
 
 .site-name {
-  grid-area: name;
-  min-width: 0;
   color: var(--text);
   font-weight: 700;
   text-decoration: none;
@@ -115,15 +112,7 @@ main,
   align-items: center;
 }
 
-.site-nav { grid-area: nav; min-width: 0; }
-.utility-nav { grid-area: utility; }
-
-/* Navigation is a horizontal control group, not a prose list. */
-.site-nav li,
-.site-nav li + li {
-  margin: 0;
-  display: flex;
-}
+.site-nav { margin-left: auto; }
 
 .site-nav ul,
 .utility-nav {
@@ -142,32 +131,13 @@ main,
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  line-height: 1.25;
-  border: 1px solid transparent;
   padding: 0.45rem 0.55rem;
 }
 
 .site-nav a[aria-current="page"] {
   color: var(--text);
+  font-weight: 700;
   text-decoration-thickness: 0.16em;
-}
-
-/* Keep label widths stable when the current page changes. */
-.site-nav a { font-weight: 600; }
-
-@media (max-width: 70rem) {
-  .site-header-inner {
-    grid-template-columns: minmax(0, 1fr) max-content;
-    grid-template-areas: "name utility" "nav nav";
-  }
-}
-
-@media (max-width: 32rem) {
-  .site-header-inner {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "name" "nav" "utility";
-  }
 }
 
 .theme-toggle {
@@ -318,24 +288,6 @@ li + li { margin-top: 0.5rem; }
 
 .panel h3 { margin-top: 0; }
 
-/* Reserve readable text width in addition to card padding. */
-.conversion-page .grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(calc(40ch + 2 * var(--space-md) + 2px), 100%), 1fr));
-}
-
-@media (max-width: 25rem) {
-  .conversion-page .panel,
-  .conversion-page .mvp {
-    padding-inline: 0;
-    border-inline: 0;
-  }
-
-  .conversion-page main section > ul {
-    padding-inline-start: 0;
-    list-style-position: inside;
-  }
-}
-
 .panel p:last-child,
 .panel ul:last-child { margin-bottom: 0; }
 
@@ -458,6 +410,14 @@ pre {
 .memo-meta { color: var(--muted); }
 
 @media (max-width: 48rem) {
+  .site-nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .utility-nav { margin-left: auto; }
+
   .offer-facts,
   .principles li {
     grid-template-columns: minmax(min(20rem, 100%), 1fr);
