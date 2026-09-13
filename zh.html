@@ -3,36 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>黃介韋 (Bertram)· 技術研究與系統分析</title>
-<meta name="description" content="Demo 跑通了。下一步，該交給使用者嗎？黃介韋 (Bertram)協助團隊檢查測試證據、人工確認與關鍵假設，釐清上線或投入下一筆預算前還需要驗證什麼。">
+<title>黃介韋（Bertram）· 作品與筆記</title>
+<meta name="description" content="黃介韋（Bertram）的公開作品與工作筆記：從硬體、量產與 AI 協作中的問題，檢查證據、限制與下一步。">
 <link rel="canonical" href="https://chiehweihuang.github.io/zh.html">
 <link rel="alternate" hreflang="en" href="https://chiehweihuang.github.io/">
 <link rel="alternate" hreflang="zh-Hant" href="https://chiehweihuang.github.io/zh.html">
 <link rel="alternate" hreflang="x-default" href="https://chiehweihuang.github.io/">
-<meta property="og:title" content="黃介韋 (Bertram) · 技術研究與系統分析">
-<meta property="og:description" content="Demo 跑通了。下一步，該交給使用者嗎？在上線、交給 agent 或投入下一筆預算之前，先看證據支持到哪裡。">
+<meta property="og:title" content="黃介韋（Bertram）· 作品與筆記">
+<meta property="og:description" content="公開作品、工作筆記，以及關於技術與使用的證據邊界。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiehweihuang.github.io/zh.html">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://chiehweihuang.github.io/assets/og-map.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <script>(function(){var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="stylesheet" href="style.css?v=20260908-nav2">
+<link rel="stylesheet" href="style.css?v=20260913-portfolio">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS7ZWBH3V"></script>
 <script defer src="site.js"></script>
 </head>
-<body class="conversion-page">
+<body>
 <a class="skip-link" href="#main">跳至主要內容</a>
 <header class="site-header">
   <div class="site-header-inner">
     <a class="site-name" href="zh.html" aria-current="page">黃介韋 (Bertram)</a>
     <nav class="site-nav" aria-label="主要導覽">
       <ul>
-        <li><a href="zh-work.html">合作方式</a></li>
-        <li><a href="zh-cases.html">案例</a></li>
-        <li><a href="zh-research.html">研究</a></li>
-        <li><a href="zh-futures.html">未來判讀</a></li>
-        <li><a href="zh-about.html">關於我</a></li>
+        <li><a href="zh-cases.html">作品</a></li>
+        <li><a href="zh-research.html">筆記</a></li>
+        <li><a href="zh-about.html">關於</a></li>
+        <li><a href="zh-work.html">聯絡</a></li>
       </ul>
     </nav>
     <div class="utility-nav">
@@ -43,87 +41,10 @@
 </header>
 
 <main id="main">
-  <header class="page-intro">
-    <p class="eyebrow">技術研究與系統分析</p>
-    <h1>Demo 跑通了。<br>下一步，該交給使用者嗎？</h1>
-    <p class="tagline">準備把 AI agent 放進團隊流程，或投入下一批原型？我協助你釐清：測試到底證明了什麼、哪些地方還需要人確認，以及下一步該怎麼驗證。</p>
-    <p>我是黃介韋 (Bertram)。我的經驗跨越硬體量產、機器人與 AI 工具實作，現在把這些經驗用在一個具體的合作方式：針對你即將做的技術決定，提供有範圍的書面分析。</p>
-    <div class="actions">
-      <a class="button-link" href="mailto:chieh.wei.huang@gmail.com?subject=技術分析合作詢問&amp;body=我們正在做：%0A接下來準備：%0A目前拿不準的是：">寄信聊聊你的專案</a>
-      <a class="button-link secondary" href="zh-work.html">先看合作內容</a>
-    </div>
-    <p class="kicker">幾句話就能開始，不用先做簡報。· 日本京都近郊</p>
-  </header>
-
-  <section class="mvp" aria-labelledby="mvp-heading">
-    <p class="eyebrow">Decision Note 001</p>
-    <h2 id="mvp-heading">報告找到 17 個問題，真的都要修嗎？</h2>
-    <p>我用 Beacon 檢查自己的網站，追問哪些檢測結果足以成為 agent 的修改指令，以及哪些還需要補測或釐清意圖。</p>
-    <p>這個案例展示判斷如何形成；是否能減少返工，仍待實驗。</p>
-    <div class="actions">
-      <a class="button-link" href="zh-decision-note-agent-repair.html">閱讀 Decision Note</a>
-      <a class="button-link secondary" href="zh-cases.html">查看過去實績</a>
-    </div>
-  </section>
-
-  <section aria-labelledby="questions-heading">
-    <h2 id="questions-heading">這是不是你接下來要做的決定？</h2>
-    <div class="grid">
-      <article class="panel">
-        <h3>準備把 agent 放進團隊流程。</h3>
-        <p>有人盯著時可以運作。但在減少人工確認之前，需要知道哪些錯誤仍由人接住，以及出問題時怎麼接手。</p>
-      </article>
-      <article class="panel">
-        <h3>agent 一直改，離上線有更近嗎？</h3>
-        <p>每次修改後，報告又不一樣。繼續改之前，需要區分真正的缺陷與測試限制，並說清楚對使用者而言，怎樣才算改好。</p>
-      </article>
-      <article class="panel">
-        <h3>原型能動，下一批卻要花真金白銀。</h3>
-        <p>投入之前，需要確認零件測試是否足以代表完整系統，以及可靠性、製造條件還有哪些問題沒有答案。</p>
-      </article>
-    </div>
-  </section>
-
-  <section aria-labelledby="work-heading">
-    <h2 id="work-heading">精選成果</h2>
-    <div class="grid">
-      <article class="panel">
-        <p class="eyebrow">實體 AI</p>
-        <h3><a href="map.html" hreflang="en">Physical AI Deployment Map</a></h3>
-        <p>把十六種部署放進環境限制、實際自主程度、規模與證據品質的同一張圖。</p>
-      </article>
-      <article class="panel">
-        <p class="eyebrow">AI 輔助評估</p>
-        <h3><a href="https://chiehweihuang.github.io/beacon/zh-Hant.html">Beacon</a></h3>
-        <p>一套無障礙與 AEO 檢查系統，公開 benchmark、量測範圍、較弱的檢查器與不能下結論的地方。</p>
-      </article>
-      <article class="panel">
-        <p class="eyebrow">選擇設計</p>
-        <h3><a href="zh-cases.html#maida">只給一個選擇，不再增加一條動態牆</a></h3>
-        <p>已發布的桌面產品，用一次一款遊戲的方式降低選擇負擔，也避免推薦系統變成另一種依賴。</p>
-      </article>
-    </div>
-    <p><a href="zh-cases.html">查看完整案例</a>，包括實際部署的機器人、觸覺感測、力回饋、量產、AI 工具與評估管線。</p>
-  </section>
-
-  <section aria-labelledby="method-heading">
-    <h2 id="method-heading">同一套方法，看實體與數位系統</h2>
-    <ol class="principles">
-      <li><span><strong>先說清楚要決定什麼。</strong><br>是要改設計、交給使用者、減少人工確認，還是投入下一筆預算？先界定這一步承諾。</span></li>
-      <li><span><strong>把宣稱和證據分開。</strong><br>區分實際量測、客戶確認、廠商自報、demo 與類比。</span></li>
-      <li><span><strong>找出會改變結果的假設。</strong><br>必要時深入測試、製造條件、人工介入與錯誤恢復，確認 demo 之外還有哪些條件。</span></li>
-      <li><span><strong>訂出下一個門檻。</strong><br>說清楚要看到什麼證據，才值得繼續、改方向或停下來。</span></li>
-    </ol>
-  </section>
-
-  <section class="contact-block" aria-labelledby="contact-heading">
-    <h2 id="contact-heading">你接下來準備上線、交給 agent，還是投入下一筆預算？</h2>
-    <p>告訴我你在做什麼、接下來準備怎麼做，以及哪裡拿不準。不用先替問題下診斷，第一封信也不必附機密資料。</p>
-    <div class="actions"><a class="button-link" href="mailto:chieh.wei.huang@gmail.com?subject=技術分析合作詢問&amp;body=我們正在做：%0A接下來準備：%0A目前拿不準的是：">寄信聊聊你的專案</a><a class="button-link secondary" href="zh-work.html">查看範圍與交付內容</a></div>
-    <p>我會先確認能否協助；正式付費合作前，再談定範圍、費用與結束日。</p>
-    <p>按鈕沒有開啟信箱？也可以複製這個地址寄信：</p>
-    <p><a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a></p>
-  </section>
+<header class="page-intro home-intro"><p class="eyebrow">作品與工作筆記</p><h1>在下一步之前，值得先檢查的問題。</h1><p class="tagline">我從電路設計、量產與解決問題的經驗出發，檢查技術與 AI 協作中的結果能支持什麼、還不能支持什麼，以及下一步要怎麼驗證。</p><p><a class="button-link" href="zh-cases.html">看作品</a></p></header>
+<section aria-labelledby="featured-heading"><h2 id="featured-heading">精選作品</h2><div class="grid"><article class="panel"><p class="eyebrow">Decision Note 001 · 2026</p><h3><a href="zh-decision-note-agent-repair.html">報告找到 17 個問題，真的都要修嗎？</a></h3><p>以自己的網站為例，拆開工具報告、實際觀察，以及修改是否有理由的判斷。</p><p class="meta">它不是客戶成果，也尚未證明能減少返工。</p></article><article class="panel"><p class="eyebrow">獨立工具</p><h3><a href="https://chiehweihuang.github.io/beacon/zh-Hant.html">Beacon</a></h3><p>我開發的網頁無障礙測試工具／Skill，區分自動化檢測結果與仍需人判斷的問題。</p><p class="meta">這是持續工作，不是全面合規認證。</p></article></div><p><a href="zh-cases.html">查看所有公開作品與證據限制</a></p></section>
+<section aria-labelledby="background-heading"><h2 id="background-heading">從實務出發</h2><p class="measure">我的硬體工作經驗包括方案與架構方向、量產可行性，以及成本、時程、測試與可靠性之間的取捨。現在，我把這些經驗用在獨立專案，以及人如何與 AI 協作的問題上。</p><p><a href="zh-about.html">我的經歷與目前關注的問題</a></p></section>
+<section class="contact-block" aria-labelledby="contact-heading"><h2 id="contact-heading">開始交流</h2><p>如果某件作品或筆記碰到你正在處理的問題，歡迎用可公開或非機密資訊寄一段簡短說明。我會先確認問題是否適合交流。</p><p><a class="button-link" href="mailto:chieh.wei.huang@gmail.com?subject=%E7%B6%B2%E7%AB%99%E8%81%AF%E7%B5%A1">寄信給黃介韋</a></p><p>或複製地址：<a href="mailto:chieh.wei.huang@gmail.com">chieh.wei.huang@gmail.com</a></p></section>
 </main>
 
 <footer class="site-footer">
